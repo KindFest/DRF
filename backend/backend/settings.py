@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'authapp'
+    'authapp',
+    'TODO',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,13 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_RENDERER_CLASSES': {
+#         'rest_framework.renderers.JSONRenderer',
+#         'rest_framework.renderers.BrowsableAPIRenderer',
+#     }
+# }
 
 AUTH_USER_MODEL = 'authapp.users'
 

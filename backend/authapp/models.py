@@ -30,6 +30,8 @@ class Users(AbstractUser):
         },
     )
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
     # def save(self, *args, **kwargs):
     #     self.email.lower()
     #     return super().save(*args, **kwargs)
