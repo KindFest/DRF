@@ -3,6 +3,8 @@ from .models import Projects, TODO
 from .serializers import ProjectsModelSerializer, TODOModelSerializer
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework import mixins
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly, IsAdminUser, \
+    BasePermission, DjangoModelPermissions, DjangoModelPermissionsOrAnonReadOnly
 
 
 class ProjectsLimitOffsetPagination(LimitOffsetPagination):
@@ -15,6 +17,7 @@ class TODOLimitOffsetPagination(LimitOffsetPagination):
 
 class ProjectsModelViewSet(ModelViewSet):
     pagination_class = ProjectsLimitOffsetPagination
+    permission_classes = [DjangoModelPermissions]
     serializer_class = ProjectsModelSerializer
     queryset = Projects.objects.all()
 
@@ -27,6 +30,7 @@ class ProjectsModelViewSet(ModelViewSet):
 
 class TODOModelViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, mixins.ListModelMixin, GenericViewSet):
     pagination_class = TODOLimitOffsetPagination
+    permission_classes = [DjangoModelPermissions]
     serializer_class = TODOModelSerializer
     queryset = TODO.objects.all()
 
